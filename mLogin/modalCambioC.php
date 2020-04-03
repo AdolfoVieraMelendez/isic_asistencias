@@ -13,18 +13,22 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <label for="passw">Nueva Contraseña:</label>
-                    <input type="text" class="form-control " id="passw" autofocus required>
+                    <input type="password" class="form-control " id="passw" autofocus required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group">
                     <label for="passConfirm">Confirmar Contraseña:</label>
-                    <input type="text" class="form-control " id="passConfirm" autofocus required>
+                    <input type="password" class="form-control " id="passConfirm" autofocus required>
                 </div>
             </div>
         </div>
       </div>
+      
       <div class="modal-footer">
+        <button type="button" id="btnVerContra" class="btn btn-primary" value=0>
+            <i id="icoVerContra" class="far fa-eye-slash"></i>
+        </button>
         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">
             <i class='fa fa-ban fa-lg'></i>
             Cancelar

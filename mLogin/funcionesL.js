@@ -237,3 +237,23 @@ function verificarContra(){
 $("#btnCambiarContra").click(function(){
     verificarContra();    
 });
+
+
+$("#btnVerContra").click(function(){
+    var valorBoton = $("#btnVerContra").val();
+    if (valorBoton == 0){
+        $("#btnVerContra").val(1);
+        $("#icoVerContra").removeClass("far fa-eye-slash");
+        $("#icoVerContra").addClass("far fa-eye");
+        $("#passw").attr('type', 'text');
+        $("#passConfirm").attr('type', 'text');
+    }else{
+        $("#btnVerContra").val(0);
+        $("#icoVerContra").removeClass("far fa-eye");
+        $("#icoVerContra").addClass("far fa-eye-slash");   
+        $("#passw").attr('type', 'password');
+        $("#passConfirm").attr('type', 'password');   
+    }
+})
+
+
