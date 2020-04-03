@@ -142,6 +142,9 @@ $fecha=date("Y-m-d");
     <!-- Modal de PDF -->
         <?php include'../modales/modalPDF.php'; ?>
     <!-- Modal de PDF -->
+    <!-- Modal de PDF -->
+        <?php include'../mLogin/modalCambioC.php'; ?>
+    <!-- Modal de PDF -->
 
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   
