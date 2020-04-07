@@ -459,3 +459,82 @@ $('#scroll').click(function(){
     $("html, body").animate({ scrollTop: 0 }, 600); 
     return false; 
 });
+
+$("#btnCambiarContraMenu").click(function(){
+    $("#modalCambio-I").modal("show");
+});
+
+function random_password_Inicio(largo){
+    var resultado = '';
+    var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var numCaracteres = caracteres.length;
+
+    for(var i = 0; i < largo; i++){
+        resultado += caracteres.charAt(Math.floor(Math.random() * numCaracteres));
+    }
+    $("#passwInicio").val(resultado);
+    $("#passConfirmInicio").val(resultado);
+    alertify.success('<i class="fas fa-check"></i> Contraseña Generada', 1);
+};
+
+$("#btnGenerarContraInicio").click(function(){
+    var largo = 8;
+    random_password_Inicio(largo);
+    
+});
+
+function verificarContraInicio(){
+    var usuario = $("#inicioIdusuario").val();
+    var contra = $("#passwInicio").val();
+    var vContra = $("#passConfirmInicio").val();
+    if(contra.length <=7){
+        alertify.error('<i class="fas fa-times"></i> La contraseña debe tener al menos 8 caracteres', 2);
+    }else{
+        if(vContra != contra){
+            alertify.error('<i class="fas fa-times"></i> Los campos de las contraseñas tienen que coincidir', 2);
+        }else{
+            $.ajax({
+                url:"../mInicio/actualizar_contra_inicio.php",
+                type:"POST",
+                dateType:"html",
+                data:{contra, usuario},
+                success:function(respuesta){
+                    alertify.success("<i class='fa fa-save fa-lg'></i> Se ha cambiado la contraseña", 2);
+                    $("#passwInicio").val("");
+                    $("#passConfirmInicio").val("");
+                    $("#modalCambio-I").modal("hide");
+                },
+                error:function(xhr,status){
+                    alert("Error en metodo AJAX");
+                },
+            });   
+        }
+    }
+};
+
+$("#btnCambiarContraInicio").click(function(){
+    verificarContraInicio();    
+});
+
+$("#btnCancelarContraInicio").click(function(){
+    $("#passwInicio").val("");
+    $("#passConfirmInicio").val("");
+});
+
+$("#btnVerContraInicio").click(function(){
+    var valorBoton = $("#btnVerContraInicio").val();
+    if (valorBoton == 0){
+        $("#btnVerContraInicio").val(1);
+        $("#icoVerContraInicio").removeClass("far fa-eye-slash");
+        $("#icoVerContraInicio").addClass("far fa-eye");
+        $("#passwInicio").attr('type', 'text');
+        $("#passConfirmInicio").attr('type', 'text');
+    }else{
+        $("#btnVerContraInicio").val(0);
+        $("#icoVerContraInicio").removeClass("far fa-eye");
+        $("#icoVerContraInicio").addClass("far fa-eye-slash");   
+        $("#passwInicio").attr('type', 'password');
+        $("#passConfirmInicio").attr('type', 'password');   
+    }
+});
+

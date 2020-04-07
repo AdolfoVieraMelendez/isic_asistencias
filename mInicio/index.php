@@ -142,9 +142,12 @@ $fecha=date("Y-m-d");
     <!-- Modal de PDF -->
         <?php include'../modales/modalPDF.php'; ?>
     <!-- Modal de PDF -->
-    <!-- Modal de PDF -->
+    <!-- Modal de Cambio de Contrasema Login -->
         <?php include'../mLogin/modalCambioC.php'; ?>
-    <!-- Modal de PDF -->
+    <!-- Modal de Cambio de Contrasema Login -->
+    <!-- Modal de Cambio de Contrasema Inicio -->
+        <?php include'../mInicio/modalCambioC.php'; ?>
+    <!-- Modal de Cambio de Contrasema Inicio -->
 
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   

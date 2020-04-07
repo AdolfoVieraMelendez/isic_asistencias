@@ -254,6 +254,6 @@ $("#btnVerContra").click(function(){
         $("#passw").attr('type', 'password');
         $("#passConfirm").attr('type', 'password');   
     }
-})
+});
 
 
