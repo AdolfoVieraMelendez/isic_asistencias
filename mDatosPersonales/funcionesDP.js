@@ -517,4 +517,490 @@ function subirFoto(){
 // return false;
 }
 
+function abrirModalHorario(id, nombre, turno, l_entrada, l_salida, m_entrada, m_salida, mi_entrada, mi_salida, j_entrada, j_salida, v_entrada, v_salida, s_entrada, s_salida, d_entrada, d_salida, valorHorario) {
+    $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").removeAttr('disabled');
+    $("#btnLunesHorario").val(1);
+    $("#btnMartesHorario, #btnMiercolesHorario, #btnJuevesHorario, #btnViernesHorario, #btnSabadoHorario, #btnDomingoHorario").val(0);
+    cambiarBtnDia();
+    $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").attr('disabled', 'disabled');
+    $("#txtTitularHorario").text(nombre);
+    $("#txtNombrePersona").val(nombre);
+    $("#txtHorario").val(valorHorario);
+    $("#txtPersonaHorario").val(id);
 
+    if (valorHorario == 'Si') {
+        var l_entradaSP = l_entrada.split(":");
+        var l_entradaC = l_entradaSP[0] + ':' + l_entradaSP[1];
+        var l_salidaSP = l_salida.split(":");
+        var l_salidaC = l_salidaSP[0] + ':' + l_salidaSP[1];
+        
+        var m_entradaSP = m_entrada.split(":");
+        var m_entradaC = m_entradaSP[0] + ':' + m_entradaSP[1];
+        var m_salidaSP = m_salida.split(":");
+        var m_salidaC = m_salidaSP[0] + ':' + m_salidaSP[1];
+        
+        var mi_entradaSP = mi_entrada.split(":");
+        var mi_entradaC = mi_entradaSP[0] + ':' +mi_entradaSP[1];
+        var mi_salidaSP = mi_salida.split(":");
+        var mi_salidaC = mi_salidaSP[0] + ':' + mi_salidaSP[1];
+        
+        var j_entradaSP = j_entrada.split(":");
+        var j_entradaC = j_entradaSP[0] + ':' +j_entradaSP[1];
+        var j_salidaSP = j_salida.split(":");
+        var j_salidaC = j_salidaSP[0] + ':' + j_salidaSP[1];
+        
+        var v_entradaSP = v_entrada.split(":");
+        var v_entradaC = v_entradaSP[0] + ':' +v_entradaSP[1];
+        var v_salidaSP = v_salida.split(":");
+        var v_salidaC = v_salidaSP[0] + ':' + v_salidaSP[1];
+        
+        var s_entradaSP = s_entrada.split(":");
+        var s_entradaC = s_entradaSP[0] + ':' +s_entradaSP[1];
+        var s_salidaSP = s_salida.split(":");
+        var s_salidaC = s_salidaSP[0] + ':' + s_salidaSP[1];
+        
+        var d_entradaSP = d_entrada.split(":");
+        var d_entradaC = d_entradaSP[0] + ':' +d_entradaSP[1];
+        var d_salidaSP = d_salida.split(":");
+        var d_salidaC = d_salidaSP[0] + ':' +d_salidaSP[1];
+
+        $("#l_entrada").val(l_entradaC);
+        $("#l_salida").val(l_salidaC);
+
+        $("#m_entrada").val(m_entradaC);
+        $("#m_salida").val(m_salidaC);
+
+        $("#mi_entrada").val(mi_entradaC);
+        $("#mi_salida").val(mi_salidaC);
+
+        $("#j_entrada").val(j_entradaC);
+        $("#j_salida").val(j_salidaC);
+
+        $("#v_entrada").val(v_entradaC);
+        $("#v_salida").val(v_salidaC);
+
+        $("#s_entrada").val(s_entradaC);
+        $("#s_salida").val(s_salidaC);
+
+        $("#d_entrada").val(d_entradaC);
+        $("#d_salida").val(d_salidaC);
+
+        if (turno == "Especial") {
+            $("#hTurno option[value=" + turno + "]").attr("selected", true);
+            $("#hTurno").val("Especial");
+            $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").removeAttr('disabled');
+            $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").val('');
+            timeCalculator();
+        } else {
+            if (turno == "Matutino") {
+                $("#hTurno option[value='Matutino']").attr("selected", true);
+                $("#hTurno").val("Matutino");
+                $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").attr('disabled', 'disabled');
+                timeCalculator();
+            } else {
+                if (turno == "Vespertino") {
+                    $("#hTurno option[value='Vespertino']").attr("selected", true);
+                    $("#hTurno").val("Vespertino");
+                    $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").attr('disabled', 'disabled');
+                    timeCalculator();
+                } else {
+                    if (turno == "Nocturno") {
+                        $("#hTurno option[value='Nocturno']").attr("selected", true);
+                        $("#hTurno").val("Nocturno");
+                        $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").attr('disabled', 'disabled');
+                        $("#hTotales").text("Horas Totales: 30");
+                        $("#hTotales").css('color', '#00b30f');
+                        
+                    }
+                }
+            }
+        }
+    } else {
+        $("#hTurno option[value='Especial']").attr("selected", true);
+        $("#hTurno").val("Especial");
+        $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").removeAttr('disabled');
+        $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").val('');
+        timeCalculator();
+    }
+
+    
+
+    $("#modalHorario-DP").modal("show");
+}
+
+function cambiarBtnDia() {
+    var btnLunes = $("#btnLunesHorario").val(); 
+    var btnMartes = $("#btnMartesHorario").val(); 
+    var btnMiercoles = $("#btnMiercolesHorario").val(); 
+    var btnJueves = $("#btnJuevesHorario").val(); 
+    var btnViernes = $("#btnViernesHorario").val(); 
+    var btnSabado = $("#btnSabadoHorario").val(); 
+    var btnDomingo = $("#btnDomingoHorario").val(); 
+
+    if (btnLunes == 1) {
+        $("#l_entradaCont, #l_salidaCont").removeAttr('hidden');
+        $("#btnLunesHorario").html("<i class='fas fa-check'></i> Lunes");
+
+        $("#m_entradaCont, #m_salidaCont, #mi_entradaCont, #mi_salidaCont, #j_entradaCont, #j_salidaCont, #v_entradaCont, #v_salidaCont, #s_entradaCont, #s_salidaCont, #d_entradaCont, #d_salidaCont").attr('hidden', 'hidden');
+        $("#btnMartesHorario").html("Martes");
+        $("#btnMiercolesHorario").html("Miércoles");
+        $("#btnJuevesHorario").html("Jueves");
+        $("#btnViernesHorario").html("Viernes");
+        $("#btnSabadoHorario").html("Sábado");
+        $("#btnDomingoHorario").html("Domingo");
+    } else {
+        if (btnMartes == 1) {
+            $("#l_entradaCont, #l_salidaCont, #mi_entradaCont, #mi_salidaCont, #j_entradaCont, #j_salidaCont, #v_entradaCont, #v_salidaCont, #s_entradaCont, #s_salidaCont, #d_entradaCont, #d_salidaCont").attr('hidden', 'hidden');
+            $("#btnLunesHorario").html("Lunes");
+
+            $("#m_entradaCont, #m_salidaCont").removeAttr('hidden');
+            $("#btnMartesHorario").html("<i class='fas fa-check'></i> Martes");
+            $("#btnMiercolesHorario").html("Miércoles");
+            $("#btnJuevesHorario").html("Jueves");
+            $("#btnViernesHorario").html("Viernes");
+            $("#btnSabadoHorario").html("Sábado");
+            $("#btnDomingoHorario").html("Domingo");
+        } else {
+            if (btnMiercoles == 1) {
+                $("#l_entradaCont, #l_salidaCont, #m_entradaCont, #m_salidaCont, #j_entradaCont, #j_salidaCont, #v_entradaCont, #v_salidaCont, #s_entradaCont, #s_salidaCont, #d_entradaCont, #d_salidaCont").attr('hidden', 'hidden');
+                $("#btnLunesHorario").html("Lunes");
+                $("#btnMartesHorario").html("Martes");
+
+                $("#mi_entradaCont, #mi_salidaCont").removeAttr('hidden');
+                $("#btnMiercolesHorario").html("<i class='fas fa-check'></i> Miércoles");
+                $("#btnJuevesHorario").html("Jueves");
+                $("#btnViernesHorario").html("Viernes");
+                $("#btnSabadoHorario").html("Sábado");
+                $("#btnDomingoHorario").html("Domingo");
+            } else {
+                if (btnJueves == 1) {
+                    $("#l_entradaCont, #l_salidaCont, #m_entradaCont, #m_salidaCont, #mi_entradaCont, #mi_salidaCont, #v_entradaCont, #v_salidaCont, #s_entradaCont, #s_salidaCont, #d_entradaCont, #d_salidaCont").attr('hidden', 'hidden');
+                    $("#btnLunesHorario").html("Lunes");
+                    $("#btnMartesHorario").html("Martes");
+                    $("#btnMiercolesHorario").html("Miércoles");
+
+                    $("#j_entradaCont, #j_salidaCont").removeAttr('hidden');
+                    $("#btnJuevesHorario").html("<i class='fas fa-check'></i> Jueves");
+                    $("#btnViernesHorario").html("Viernes");
+                    $("#btnSabadoHorario").html("Sábado");
+                    $("#btnDomingoHorario").html("Domingo");
+                } else {
+                    if (btnViernes == 1) {
+                        $("#l_entradaCont, #l_salidaCont, #m_entradaCont, #m_salidaCont, #mi_entradaCont, #mi_salidaCont, #j_entradaCont, #j_salidaCont, #s_entradaCont, #s_salidaCont, #d_entradaCont, #d_salidaCont").attr('hidden', 'hidden');
+                        $("#btnLunesHorario").html("Lunes");
+                        $("#btnMartesHorario").html("Martes");
+                        $("#btnMiercolesHorario").html("Miércoles");
+                        $("#btnJuevesHorario").html("Jueves");
+
+                        $("#v_entradaCont, #v_salidaCont").removeAttr('hidden');
+                        $("#btnViernesHorario").html("<i class='fas fa-check'></i> Viernes");
+                        $("#btnSabadoHorario").html("Sábado");
+                        $("#btnDomingoHorario").html("Domingo");
+                    } else {
+                        if (btnSabado == 1) {
+                            $("#l_entradaCont, #l_salidaCont, #m_entradaCont, #m_salidaCont, #mi_entradaCont, #mi_salidaCont, #j_entradaCont, #j_salidaCont, #v_entradaCont, #v_salidaCont, #d_entradaCont, #d_salidaCont").attr('hidden', 'hidden');
+                            $("#btnLunesHorario").html("Lunes");
+                            $("#btnMartesHorario").html("Martes");
+                            $("#btnMiercolesHorario").html("Miércoles");
+                            $("#btnJuevesHorario").html("Jueves");
+                            $("#btnViernesHorario").html("Viernes");
+
+                            $("#s_entradaCont, #s_salidaCont").removeAttr('hidden');
+                            $("#btnSabadoHorario").html("<i class='fas fa-check'></i> Sábado");
+                            $("#btnDomingoHorario").html("Domingo");
+                        } else {
+                            if (btnDomingo == 1) {
+                                $("#l_entradaCont, #l_salidaCont, #m_entradaCont, #m_salidaCont, #mi_entradaCont, #mi_salidaCont, #j_entradaCont, #j_salidaCont, #v_entradaCont, #v_salidaCont, #s_entradaCont, #s_salidaCont").attr('hidden', 'hidden');
+                                $("#btnLunesHorario").html("Lunes");
+                                $("#btnMartesHorario").html("Martes");
+                                $("#btnMiercolesHorario").html("Miércoles");
+                                $("#btnJuevesHorario").html("Jueves");
+                                $("#btnViernesHorario").html("Viernes");
+                                $("#btnSabadoHorario").html("Sábado");
+
+                                $("#d_entradaCont, #d_salidaCont").removeAttr('hidden');
+                                $("#btnDomingoHorario").html("<i class='fas fa-check'></i> Domingo");
+                            }
+                        }
+                    }
+                }
+            }
+        }        
+    }
+};
+
+$("#btnLunesHorario").click(function () {
+    $("#btnLunesHorario").val(1);
+    $("#btnMartesHorario, #btnMiercolesHorario, #btnJuevesHorario, #btnViernesHorario, #btnSabadoHorario, #btnDomingoHorario").val(0);
+    cambiarBtnDia();
+});
+
+$("#btnMartesHorario").click(function () {
+    $("#btnLunesHorario, #btnMiercolesHorario, #btnJuevesHorario, #btnViernesHorario, #btnSabadoHorario, #btnDomingoHorario").val(0);
+    $("#btnMartesHorario").val(1);
+    cambiarBtnDia();
+});
+
+$("#btnMiercolesHorario").click(function () {
+    $("#btnLunesHorario, #btnMartesHorario, #btnJuevesHorario, #btnViernesHorario, #btnSabadoHorario, #btnDomingoHorario").val(0);
+    $("#btnMiercolesHorario").val(1);
+    cambiarBtnDia();
+});
+
+$("#btnJuevesHorario").click(function () {
+    $("#btnLunesHorario, #btnMartesHorario, #btnMiercolesHorario, #btnViernesHorario, #btnSabadoHorario, #btnDomingoHorario").val(0);
+    $("#btnJuevesHorario").val(1);
+    cambiarBtnDia();
+});
+
+$("#btnViernesHorario").click(function () {
+    $("#btnLunesHorario, #btnMartesHorario, #btnMiercolesHorario, #btnJuevesHorario, #btnSabadoHorario, #btnDomingoHorario").val(0);
+    $("#btnViernesHorario").val(1);
+    cambiarBtnDia();
+});
+
+$("#btnSabadoHorario").click(function () {
+    $("#btnLunesHorario, #btnMartesHorario, #btnMiercolesHorario, #btnJuevesHorario, #btnViernesHorario, #btnDomingoHorario").val(0);
+    $("#btnSabadoHorario").val(1);
+    cambiarBtnDia();
+});
+
+$("#btnDomingoHorario").click(function () {
+    $("#btnLunesHorario, #btnMartesHorario, #btnMiercolesHorario, #btnJuevesHorario, #btnViernesHorario, #btnSabadoHorario").val(0);
+    $("#btnDomingoHorario").val(1);
+    cambiarBtnDia();
+});
+
+$("#btnCancelarHorarioDP").click(function () {
+    $("#modalHorario-DP").modal("hide");
+});
+
+$("#hTurno").change(function () {
+    var valorSelect = $(this).val();
+    console.log(valorSelect);
+
+    if (valorSelect == 'Matutino') {
+        $("#l_entrada, #m_entrada, #mi_entrada, #j_entrada, #v_entrada").val("06:00");
+        $("#l_salida, #m_salida, #mi_salida, #j_salida, #v_salida").val("12:00");
+        $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").attr('disabled', 'disabled');
+        timeCalculator();
+    } else {
+        if (valorSelect == 'Vespertino') {
+            $("#l_entrada, #m_entrada, #mi_entrada, #j_entrada, #v_entrada").val("12:00");
+            $("#l_salida, #m_salida, #mi_salida, #j_salida, #v_salida").val("18:00");
+            $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").attr('disabled', 'disabled');
+            timeCalculator();
+        } else {
+            if (valorSelect == 'Nocturno') {
+                $("#l_entrada, #m_entrada, #mi_entrada, #j_entrada, #v_entrada").val("18:00");
+                $("#l_salida, #m_salida, #mi_salida, #j_salida, #v_salida").val("00:00");
+                $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").attr('disabled', 'disabled');
+                $("#hTotales").text("Horas Totales: 30");
+                $("#hTotales").css('color', '#00b30f');
+                $("#btnGuardarHorarioDP").removeAttr('disabled');
+
+            } else {
+                if (valorSelect == 'Especial') {
+                    $("#l_entrada, #l_salida, #m_entrada, #m_salida, #mi_entrada, #mi_salida, #j_entrada, #j_salida, #v_entrada, #v_salida, #s_entrada, #s_salida, #d_entrada, #d_salida").removeAttr('disabled');
+                    $("#l_entrada, #m_entrada, #mi_entrada, #j_entrada, #v_entrada, #s_entrada, #d_entrada, #l_salida, #m_salida, #mi_salida, #j_salida, #v_salida, #s_salida, #d_salida").val('');
+                    timeCalculator();
+                }
+            }
+        }
+    }
+    
+});
+
+$("#btnXD").click(function () {
+
+});
+
+function timeCalculator() {
+    var lunes_e = $("#l_entrada").val();
+    var lunes_s = $("#l_salida").val();
+
+    var martes_e = $("#m_entrada").val();
+    var martes_s = $("#m_salida").val();
+
+    var miercoles_e = $("#mi_entrada").val();
+    var miercoles_s = $("#mi_salida").val();
+
+    var jueves_e = $("#j_entrada").val();
+    var jueves_s = $("#j_salida").val();
+
+    var viernes_e = $("#v_entrada").val();
+    var viernes_s = $("#v_salida").val();
+
+    var sabado_e = $("#s_entrada").val();
+    var sabado_s = $("#s_salida").val();
+
+    var domingo_e = $("#d_entrada").val();
+    var domingo_s = $("#d_salida").val();
+    
+    var m_lunes_e = moment.duration(lunes_e);
+    var m_lunes_s = moment.duration(lunes_s);
+
+    var m_martes_e = moment.duration(martes_e);
+    var m_martes_s = moment.duration(martes_s);
+
+    var m_miercoles_e = moment.duration(miercoles_e);
+    var m_miercoles_s = moment.duration(miercoles_s);
+
+    var m_jueves_e = moment.duration(jueves_e);
+    var m_jueves_s = moment.duration(jueves_s);
+
+    var m_viernes_e = moment.duration(viernes_e);
+    var m_viernes_s = moment.duration(viernes_s);
+
+    var m_sabado_e = moment.duration(sabado_e);
+    var m_sabado_s = moment.duration(sabado_s);
+
+    var m_domingo_e = moment.duration(domingo_e);
+    var m_domingo_s = moment.duration(domingo_s);
+
+    var r_lunes = m_lunes_s.subtract(m_lunes_e);
+    console.log(r_lunes);    
+    var r_martes = m_martes_s.subtract(m_martes_e);
+    console.log(r_martes);
+    var r_miercoles = m_miercoles_s.subtract(m_miercoles_e);
+    console.log(r_miercoles);
+    var r_jueves = m_jueves_s.subtract(m_jueves_e);
+    console.log(r_jueves);
+    var r_viernes = m_viernes_s.subtract(m_viernes_e);
+    console.log(r_viernes);
+    var r_sabado = m_sabado_s.subtract(m_sabado_e);
+    console.log(r_sabado);
+    var r_domingo = m_domingo_s.subtract(m_domingo_e);
+    console.log(r_domingo);
+
+    var hrs_lunes = r_lunes._data.hours;
+    var hrs_martes = r_martes._data.hours;
+    var hrs_miercoles = r_miercoles._data.hours;
+    var hrs_jueves = r_jueves._data.hours;
+    var hrs_viernes = r_viernes._data.hours;
+    var hrs_sabado = r_sabado._data.hours;
+    var hrs_domingo = r_domingo._data.hours;
+
+    var min_lunes = r_lunes._data.minutes;
+    var min_martes = r_martes._data.minutes;
+    var min_miercoles = r_miercoles._data.minutes;
+    var min_jueves = r_jueves._data.minutes;
+    var min_viernes = r_viernes._data.minutes;
+    var min_sabado = r_sabado._data.minutes;
+    var min_domingo = r_domingo._data.minutes;
+
+    var sumaHoras = parseInt(hrs_lunes) + parseInt(hrs_martes) + parseInt(hrs_miercoles) + parseInt(hrs_jueves) + parseInt(hrs_viernes) + parseInt(hrs_sabado) + parseInt(hrs_domingo);
+    var sumaMinutos = parseInt(min_lunes) + parseInt(min_martes) + parseInt(min_miercoles) + parseInt(min_jueves) + parseInt(min_viernes) + parseInt(min_sabado) + parseInt(min_domingo);
+
+    if (sumaMinutos >= 60 && sumaMinutos <= 119) { 
+        sumaHoras = sumaHoras + 1;
+    } else {
+        if (sumaMinutos >= 120 && sumaMinutos <= 179) {
+            sumaHoras = sumaHoras + 2;
+        } else {
+            if (sumaMinutos >= 180 && sumaMinutos <= 239) {
+                sumaHoras = sumaHoras + 3;
+            } else {
+                if (sumaMinutos >= 240 && sumaMinutos <= 299) {
+                    sumaHoras = sumaHoras + 4;
+                } else {
+                    if (sumaMinutos >= 300 && sumaMinutos <= 359) {
+                        sumaHoras = sumaHoras + 5;
+                    } else {
+                        if (sumaMinutos >= 360 && sumaMinutos <= 419) {
+                            sumaHoras = sumaHoras + 6;
+                        } else {
+                            if (sumaMinutos >= 420 && sumaMinutos <= 479) {
+                                sumaHoras = sumaHoras + 7;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    console.log(sumaHoras);
+
+    $("#hTotales").text("Horas Totales: " + sumaHoras);
+    if (sumaHoras >= 30) {
+        $("#hTotales").css('color', '#00b30f');
+        $("#btnGuardarHorarioDP").removeAttr('disabled');
+    } else {
+        $("#hTotales").css('color', '#ff1900');
+        $("#btnGuardarHorarioDP").attr('disabled','disabled');
+    }
+};
+
+$("#l_entrada, #m_entrada, #mi_entrada, #j_entrada, #v_entrada, #s_entrada, #d_entrada").keyup(function () {
+    timeCalculator();
+});
+
+$("#l_salida, #m_salida, #mi_salida, #j_salida, #v_salida, #s_salida, #d_salida").keyup(function () {
+    timeCalculator();
+});
+
+$("#btnGuardarHorarioDP").click(function () {
+    var tieneHorario = $("#txtHorario").val();
+    console.log(tieneHorario);
+
+    var id_persona = $("#txtPersonaHorario").val();
+    var nombre_persona = $("#txtNombrePersona").val();
+    console.log(nombre_persona);
+    var l_entrada = $("#l_entrada").val();
+    var l_salida = $("#l_salida").val();
+    var m_entrada = $("#m_entrada").val();
+    var m_salida = $("#m_salida").val();
+    var mi_entrada = $("#mi_entrada").val();
+    var mi_salida = $("#mi_salida").val();
+    var j_entrada = $("#j_entrada").val();
+    var j_salida = $("#j_salida").val();
+    var v_entrada = $("#v_entrada").val();
+    var v_salida = $("#v_salida").val();
+    var s_entrada = $("#s_entrada").val();
+    var s_salida = $("#s_salida").val();
+    var d_entrada = $("#d_entrada").val();
+    var d_salida = $("#d_salida").val();
+    var turno = $("#hTurno").val();
+
+    if (tieneHorario == 'Si') {
+        $.ajax({
+            url:"../mDatosPersonales/actualizarHorario.php",
+            type:"POST",
+            dataType:"html",
+            data:{id_persona,l_entrada,l_salida,m_entrada,m_salida,mi_entrada,mi_salida,j_entrada,j_salida,v_entrada,v_salida,s_entrada,s_salida,d_entrada,d_salida,turno},
+            success:function(respuesta){
+                
+                $("#modalHorario-DP").modal("hide");
+                llenar_lista_DP();
+                alertify.success("<i class='fa fa-save fa-lg'></i> Actualizado", 5);
+                actividad  ="Se ha actualizado el horario para la persona "+nombre_persona;
+                var idUser=$("#inicioIdusuario").val();
+                log(actividad,idUser);
+    
+            },
+            error:function(xhr,status){
+                alert("Error en metodo AJAX"); 
+            },
+        });
+    } else {
+        $.ajax({
+            url:"../mDatosPersonales/guardarHorario.php",
+            type:"POST",
+            dataType:"html",
+            data:{id_persona,l_entrada,l_salida,m_entrada,m_salida,mi_entrada,mi_salida,j_entrada,j_salida,v_entrada,v_salida,s_entrada,s_salida,d_entrada,d_salida,turno},
+            success:function(respuesta){
+                
+                $("#modalHorario-DP").modal("hide");
+                llenar_lista_DP();
+                alertify.success("<i class='fa fa-save fa-lg'></i> Guardado", 5);
+                actividad  ="Se ha creado un horario para la persona "+nombre_persona;
+                var idUser=$("#inicioIdusuario").val();
+                log(actividad,idUser);
+    
+            },
+            error:function(xhr,status){
+                alert("Error en metodo AJAX"); 
+            },
+        });
+    }
+});

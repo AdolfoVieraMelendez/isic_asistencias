@@ -7,20 +7,37 @@ include'../funciones/calcularEdad.php';
 $varGral="-DP";
 
 $cadena = "SELECT
-                id_datos,
-                activo,
-                nombre,
-                ap_paterno,
-                ap_materno,
-                fecha_nac,
-                correo,
-                curp,
-                clave,
-                domicilio,
-                sexo,
-                id_ecivil
-            FROM
-                datos ORDER BY id_datos DESC";
+                datos.id_datos,
+                datos.activo,
+                datos.nombre,
+                datos.ap_paterno,
+                datos.ap_materno,
+                datos.fecha_nac,
+                datos.correo,
+                datos.curp,
+                datos.clave,
+                datos.domicilio,
+                datos.sexo,
+                datos.id_ecivil,
+                horarios.l_entrada,
+                horarios.l_salida,
+                horarios.m_entrada,
+                horarios.m_salida,
+                horarios.mi_entrada,
+                horarios.mi_salida,
+                horarios.j_entrada,
+                horarios.j_salida,
+                horarios.v_entrada,
+                horarios.v_salida,
+                horarios.s_entrada,
+                horarios.s_salida,
+                horarios.d_entrada,
+                horarios.d_salida,
+                horarios.turno
+                FROM
+                datos
+                LEFT JOIN horarios ON datos.id_datos = horarios.id_datos_persona
+                ORDER BY id_datos DESC";
 $consultar = mysqli_query($conexionLi, $cadena);
 //$row = mysqli_fetch_array($consultar);
 
@@ -35,6 +52,7 @@ $consultar = mysqli_query($conexionLi, $cadena);
                 <th scope="col">Imprimir</th>
                 <th scope="col">Datos</th>
                 <th scope="col">Foto</th>
+                <th scope="col">Horario</th>
                 <th scope="col">Audio</th>
                 <th scope="col">Clave</th>
                 <th scope="col">Nombre</th>
@@ -78,6 +96,24 @@ $consultar = mysqli_query($conexionLi, $cadena);
             $sexo       = $row[10];
             $ecivil     = $row[11];
             $nCompleto  = $row[2].' '.$row[3].' '.$row[4];
+
+            // Datos de horarios
+            $l_entrada = $row[12];
+            $l_salida = $row[13];
+            $m_entrada = $row[14];
+            $m_salida = $row[15];
+            $mi_entrada = $row[16];
+            $mi_salida = $row[17];
+            $j_entrada = $row[18];
+            $j_salida = $row[19];
+            $v_entrada = $row[20];
+            $v_salida = $row[21];
+            $s_entrada = $row[22];
+            $s_salida = $row[23];
+            $d_entrada = $row[24];
+            $d_salida = $row[25];
+            $turno = $row[26];
+            // Datos de horarios
             
             $sonido     ="El nombre completo de la persona es ".$nombre." ".$paterno." ".$materno." , registrado con la clave ".$clave;
 
@@ -89,6 +125,14 @@ $consultar = mysqli_query($conexionLi, $cadena);
             }else{
                 $icoFoto="<i class='fas fa-times fa-lg'></i>";
                 $tFoto="No";
+            }
+
+            if($turno == NULL){
+                $icoHorario="<i class='fas fa-calendar-times fa-lg'></i>";
+                $tHorario="No";
+            }else{
+                $icoHorario="<i class='fas fa-calendar-check fa-lg'></i>";
+                $tHorario="Si";
             }
 
             ?>
@@ -113,6 +157,11 @@ $consultar = mysqli_query($conexionLi, $cadena);
                 <td>
                     <button <?php echo $dtnDesabilita?> type="button" class="foto btn btn-outline-secondary btn-sm activo"  id="btnFoto<?php echo $varGral?><?php echo $n?>" onclick="abrirModalFoto('<?php echo $id?>','<?php echo $clave?>','<?php echo $nCompleto?>','<?php echo $tFoto?>')">
                         <?php echo $icoFoto?>
+                    </button>
+                </td>
+                <td>
+                    <button <?php echo $dtnDesabilita?> type="button" class="horario btn btn-outline-primary btn-sm activo"  id="btnHorario<?php echo $varGral?><?php echo $n?>" onclick="abrirModalHorario('<?php echo $id?>', '<?php echo $nCompleto?>', '<?php echo $turno?>', '<?php echo $l_entrada?>', '<?php echo $l_salida?>', '<?php echo $m_entrada?>', '<?php echo $m_salida?>', '<?php echo $mi_entrada?>', '<?php echo $mi_salida?>', '<?php echo $j_entrada?>', '<?php echo $j_salida?>', '<?php echo $v_entrada?>', '<?php echo $v_salida?>', '<?php echo $s_entrada?>', '<?php echo $s_salida?>', '<?php echo $d_entrada?>', '<?php echo $d_salida?>', '<?php echo $tHorario?>')">
+                        <?php echo $icoHorario?>
                     </button>
                 </td>
                 <td>
@@ -157,11 +206,12 @@ $consultar = mysqli_query($conexionLi, $cadena);
         </tbody>
         <tfoot>
             <tr class='hTabla'>
-            <th scope="col">#</th>
+                <th scope="col">#</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Imprimir</th>
                 <th scope="col">Datos</th>
                 <th scope="col">Foto</th>
+                <th scope="col">Horario</th>
                 <th scope="col">Audio</th>
                 <th scope="col">Clave</th>
                 <th scope="col">Nombre</th>

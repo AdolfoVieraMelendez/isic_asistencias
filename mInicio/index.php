@@ -148,9 +148,14 @@ $fecha=date("Y-m-d");
     <!-- Modal de Cambio de Contrasema Inicio -->
         <?php include'../mInicio/modalCambioC.php'; ?>
     <!-- Modal de Cambio de Contrasema Inicio -->
+    <!-- Modal Horario DP -->
+    <?php include '../mDatosPersonales/modalHorario.php'; ?>
+    <!-- Modal Horario DP -->
 
     <!-- jQuery -->
-    <script src="../plugins/jQuery/jquery-3.3.1.js"></script>   
+    <script src="../plugins/jQuery/jquery-3.3.1.js"></script>
+    <!-- MomentJS -->
+    <script src="../plugins/momentjs/moment-with-locales/moment-with-locales.min.js"></script>   
     <!-- Bootstrap-4 -->
     <script src="../plugins/bootstrap-4.0.0/dist/js/bootstrap.js"></script> 
     <!-- Alertifyjs -->  

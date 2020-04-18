@@ -45,7 +45,7 @@ $cadenaMenu = "SELECT
             while( $rowMenu = mysqli_fetch_array($consultarMenu) ) {
             ?>
             <li>
-                <a href="javascript:aplicarTema(<?php echo $rowMenu[0]?>,'enlace')" class="enlace"><i class="fas fa-angle-right"></i> <?php echo $rowMenu[1]?></a>
+                <a href="javascript:aplicarTema(<?php echo $rowMenu[0]?>,'enlace')" class="enlace sfx"><i class="fas fa-angle-right"></i> <?php echo $rowMenu[1]?></a>
             </li>
             <?php } ?>
         </ul>

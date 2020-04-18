@@ -1,6 +1,8 @@
 // VARIABLES GLOBALES
 var obscuro  = "#343A40";
 var rojo     = "#D9304B";
+var bongos = new Audio();
+bongos.src = "../audios/Bongos.mp3";
 
 function ocultarSecciones(){
     // ASISTENCIAS
@@ -538,3 +540,6 @@ $("#btnVerContraInicio").click(function(){
     }
 });
 
+$(".sfx").click(function(){
+    bongos.play();
+});
