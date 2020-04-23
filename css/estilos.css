@@ -404,3 +404,24 @@ a.article:hover {
     opacity:1;filter:"alpha(opacity=100)";
     -ms-filter:"alpha(opacity=100)";
 }
+
+.inputColor{
+    display: none;
+}
+
+.circuloTema{
+    border-radius: 50%;
+    width: 100px;
+    color: #000;
+    display: block;
+    margin: 0 auto;
+    
+}
+
+.circuloTema:hover{
+    cursor: pointer;
+}
+
+.borde{
+    text-shadow: 2px 1px rgba(0,0,0,0.7);
+}

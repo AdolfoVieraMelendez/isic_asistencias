@@ -31,7 +31,7 @@ $cadenaMenu = "SELECT
         <a href="#"><i class="fas fa-users"></i> Usuarios</a>
     </li>
     <li class="menu" id="liTemas">
-        <a href="#"><i class="fas fa-paint-brush"></i> Crear Temas</a>
+        <a href="javascript:verTemas()"><i class="fas fa-paint-brush"></i> Crear Temas</a>
     </li>
     <li class="active activado" id="liContras">
         <a href="#" id="btnCambiarContraMenu"><i class="fas fa-key"></i> Cambiar Contraseña</a>

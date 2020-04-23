@@ -19,6 +19,11 @@ function ocultarSecciones(){
     $("#editar-EC").hide();
     $("#Listado-EC").hide();
     //USUARIOS
+    // TEMAS
+    $("#crearTemas").hide();
+    $("#guardar-T").hide();
+    $("#editar-T").hide();
+    $("#Listado-T").hide();
 }
 
 function verAsistencias(){
@@ -68,6 +73,23 @@ function verEstadoCivil(){
 
 function verUsuarios(){
     ocultarSecciones();
+}
+
+function verTemas() {
+    ocultarSecciones();
+    $("#lblTitular").text("Temas");
+
+    $("#editar-T").hide();
+    $("#guardar-T").hide();
+    $("#Listado-T").fadeIn();
+    $("#frmGuardar-T")[0].reset();
+    $("#frmActualizar-T")[0].reset();
+    $("#badgeInfo").text("Lista");
+
+    $("#crearTemas").show();
+    llenar_lista_T();
+    var idTema=$("#inicioIdTema").val()
+    aplicarTema(idTema,'otro');    
 }
 
 
