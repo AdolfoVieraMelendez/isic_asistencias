@@ -78,6 +78,11 @@ $fecha=date("Y-m-d");
                     <input type="hidden" id="inicioIdusuario">
                     <input type="hidden" id="inicioIdDato">
                     <input type="hidden" id="inicioIdTema">
+
+                    <input type="hidden" id="inputColorLetra">
+                    <input type="hidden" id="inputColorBase">
+                    <input type="hidden" id="inputColorBaseF">
+                    <input type="hidden" id="inputColorBorde">
                     <div class="col text-right">
                         <span  class="badge badge-secondary">
                         <label class="lead" id="titular">Programa de ejemplo</label>
@@ -140,7 +145,7 @@ $fecha=date("Y-m-d");
                 </section>
                 
                 <section id="Listado-T" class="animated  fadeIn contenedor" style="display:none;"></section>
-            </div>           
+            </div>            
 
         </div>
 
@@ -165,13 +170,16 @@ $fecha=date("Y-m-d");
         <?php include'../mInicio/modalCambioC.php'; ?>
     <!-- Modal de Cambio de Contrasema Inicio -->
     <!-- Modal Horario DP -->
-    <?php include '../mDatosPersonales/modalHorario.php'; ?>
+        <?php include '../mDatosPersonales/modalHorario.php'; ?>
     <!-- Modal Horario DP -->
+    <!-- Modal Importar Tema -->
+        <?php include '../mTemas/modalImportar.php';?>
+    <!-- Modal Importar Tema -->
 
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>
     <!-- MomentJS -->
-    <script src="../plugins/momentjs/moment-with-locales/moment-with-locales.min.js"></script>   
+    <script src="../plugins/momentjs/moment-with-locales/moment-with-locales.min.js"></script>
     <!-- Bootstrap-4 -->
     <script src="../plugins/bootstrap-4.0.0/dist/js/bootstrap.js"></script> 
     <!-- Alertifyjs -->  

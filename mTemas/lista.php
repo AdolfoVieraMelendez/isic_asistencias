@@ -25,8 +25,7 @@ $consultar = mysqli_query($conexionLi, $cadena);
 
 ?>
 <div class="table-responsive">
-<table id="example<?php echo $varGral;?>" class="table table-striped table-bordered" style="width:100%">
-
+    <table id="example<?php echo $varGral;?>" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr class='hTabla'>
                 <th scope="col">#</th>
@@ -79,12 +78,12 @@ $consultar = mysqli_query($conexionLi, $cadena);
                     </button>
                 </td>
                 <td>
-                    <button <?php echo $dtnDesabilita?> type="button" class="exportar btn btn-outline-danger btn-sm activo" id="btnImprimir<?php echo $varGral?><?php echo $n?>" onclick="abrirModalPDF('<?php echo $id?>','../mDatosPersonales','Datos Personales')">
+                    <button <?php echo $dtnDesabilita?> type="button" class="exportar btn btn-outline-danger btn-sm activo" id="btnImprimir<?php echo $varGral?><?php echo $n?>" onclick="exportar_T('<?php echo $id?>')">
                                 <i class="fas fa-file-download fa-lg"></i>
                     </button>
                 </td>
                 <td>
-                    <button <?php echo $dtnDesabilita?> type="button" class="ventana btn btn-outline-info btn-sm activo"  id="btnModal<?php echo $varGral?><?php echo $n?>" onclick="abrirModalDatos_DP('<?php echo $id?>','<?php echo $nombre?>','<?php echo $paterno?>','<?php echo $materno?>','<?php echo $fNac?>','<?php echo $edad?>','<?php echo $correo?>','<?php echo $curp?>','<?php echo $clave?>','<?php echo $domicilio?>','<?php echo $sexo?>','<?php echo $ecivil?>')">
+                    <button <?php echo $dtnDesabilita?> type="button" class="aplicar sfx btn btn-outline-info btn-sm activo" id="btnAplicar<?php echo $varGral?><?php echo $n?>" onclick="aplicarTema('<?php echo $id?>', 'tabla')" onmouseover="hoverAplicarTema('<?php echo $color_letra?>', '<?php echo $color_base?>', '<?php echo $color_base_fuerte?>', '<?php echo $color_borde?>')">
                         <i class="fas fa-palette fa-lg"></i>
                     </button>
                 </td>
@@ -171,10 +170,10 @@ mysqli_close($conexionLi);
                         {
                             text: "<i class='fas fa-file-upload fa-lg' aria-hidden='true'></i> &nbsp;Importar Tema",
                             className: 'btn btn-outline-warning btnEspacio',
-                            id: 'btnImportar',
-                            //   action : function(){
-                                
-                            //   }
+                            id: 'btnImportar-T',
+                            action : function(){
+                                abrirModalImportar_T();    
+                            }
                         },
                         {
                           extend: 'excel',

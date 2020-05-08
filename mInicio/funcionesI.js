@@ -26,6 +26,8 @@ function ocultarSecciones(){
     $("#Listado-T").hide();
 }
 
+// Click en Menu
+
 function verAsistencias(){
     ocultarSecciones();
     preloader(1,'Asitencia del personal');
@@ -92,6 +94,7 @@ function verTemas() {
     aplicarTema(idTema,'otro');    
 }
 
+// Click en Menu
 
 
 function abrirModalPDF(id,ruta,modulo) {
@@ -119,7 +122,12 @@ function aplicarTema(id,validador){
             var letra_color=dataArray.result.color_letra;
             var color_borde=dataArray.result.color_borde;
             
-            cssTema(h_sidebar,color_base,letra_color,color_borde);
+            cssTema(h_sidebar, color_base, letra_color, color_borde);
+            
+            $("#inputColorLetra").val(letra_color);
+            $("#inputColorBase").val(color_base);
+            $("#inputColorBaseF").val(h_sidebar);
+            $("#inputColorBorde").val(color_borde);
 
             if (validador!='login'){
                 relacionarTema(id);
@@ -130,13 +138,47 @@ function aplicarTema(id,validador){
                 if(validador=='enlace'){
                     preloader(1,"Cambiando al tema "+tema);
                     actividad  ="Ha cambiado al tema "+tema;
-                    var idUser=$("#inicioIdusuario").val();
+                    var idUser = $("#inicioIdusuario").val();
+                    bongos.play();
 
                     $('#mnuColapsado').click();
 
                     log(actividad,idUser);
                     $("html, body").animate({ scrollTop: 0 }, 1000); 
                     return false; 
+                } else {
+                    if (validador == 'tabla') {
+                        swal({
+                            title: "¿Estas Seguro?",
+                            text: "¿Deseas Aplicar el Tema?",
+                            type: "info",
+                            showCancelButton: true,
+                            confirmButtonClass: "btn-success",
+                            confirmButtonText: "Si, deseo aplicar el tema",
+                            cancelButtonText: "Cancelar Acción",
+                            cancelButtonClass: "btn-outline-danger",
+                            closeOnConfirm: false,
+                            closeOnCancel: true,
+                            showLoaderOnConfirm: true
+                            }, function (isConfirm) {
+                            if (isConfirm) {
+                            setTimeout(function () {
+                                swal.close();
+                                preloader(1,"Cambiando al tema "+tema);
+                                actividad  ="Ha cambiado al tema "+tema;
+                                var idUser = $("#inicioIdusuario").val();
+                                bongos.play();
+
+                                log(actividad,idUser);
+                                $("html, body").animate({ scrollTop: 0 }, 1000); 
+                            }, 2000);}
+                            else{
+                                alertify.error(" <i class='fa fa-times fa-lg'></i> Cancelado",2);
+                            }
+                        });
+
+                        
+                    }
                 }
             }
 
@@ -560,8 +602,4 @@ $("#btnVerContraInicio").click(function(){
         $("#passwInicio").attr('type', 'password');
         $("#passConfirmInicio").attr('type', 'password');   
     }
-});
-
-$(".sfx").click(function(){
-    bongos.play();
 });
