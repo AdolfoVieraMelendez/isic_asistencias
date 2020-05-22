@@ -28,7 +28,7 @@ $cadenaMenu = "SELECT
         <a href="javascript:verEstadoCivil()"><i class="fas fa-compass"></i> Estado Civil</a>
     </li>
     <li class="menu" id="liUsuarios">
-        <a href="#"><i class="fas fa-users"></i> Usuarios</a>
+        <a href="javascript:verUsuarios()"><i class="fas fa-users"></i> Usuarios</a>
     </li>
     <li class="menu" id="liTemas">
         <a href="javascript:verTemas()"><i class="fas fa-paint-brush"></i> Crear Temas</a>

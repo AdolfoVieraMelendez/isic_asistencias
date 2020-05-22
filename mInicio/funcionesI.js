@@ -19,6 +19,10 @@ function ocultarSecciones(){
     $("#editar-EC").hide();
     $("#Listado-EC").hide();
     //USUARIOS
+    $("#usuarios").hide();
+    $("#guardar-U").hide();
+    $("#editar-U").hide();
+    $("#Listado-U").hide();
     // TEMAS
     $("#crearTemas").hide();
     $("#guardar-T").hide();
@@ -75,6 +79,19 @@ function verEstadoCivil(){
 
 function verUsuarios(){
     ocultarSecciones();
+    $("#lblTitular").text("Usuarios");
+
+    $("#editar-U").hide();
+    $("#guardar-U").hide();
+    $("#Listado-U").fadeIn();
+    $("#frmGuardar-T")[0].reset();
+    $("#frmActualizar-T")[0].reset();
+    $("#badgeInfo").text("Lista");
+
+    $("#usuarios").show();
+    llenar_lista_U();
+    var idTema=$("#inicioIdTema").val()
+    aplicarTema(idTema,'otro');
 }
 
 function verTemas() {

@@ -131,7 +131,7 @@ mysqli_close($conexionLi);
                           title:'Lista_datos_personales',
                           id: 'btnExportar',
                           exportOptions: {
-                            columns:  [6,7,8,9,10],
+                            columns:  [0,2],
                           }
                       }
 

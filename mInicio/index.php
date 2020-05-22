@@ -131,6 +131,22 @@ $fecha=date("Y-m-d");
                 <section id="Listado-EC" class="animated  fadeIn contenedor" style="display:none;"></section>
             </div>
 
+            <div class="container-fluid" id="usuarios">
+                <section id="guardar-U" style="display:none;">
+                    <?php
+                        include'../mUsuarios/formGuardar.php';
+                    ?>
+                </section>
+
+                <section id="editar-U" style="display:none;">
+                    <?php
+                        include'../mUsuarios/formEditar.php';
+                    ?>
+                </section>
+                
+                <section id="Listado-U" class="animated  fadeIn contenedor" style="display:none;"></section>
+            </div>
+
             <div class="container-fluid" id="crearTemas">
                 <section id="guardar-T" style="display:none;">
                     <?php
@@ -175,6 +191,9 @@ $fecha=date("Y-m-d");
     <!-- Modal Importar Tema -->
         <?php include '../mTemas/modalImportar.php';?>
     <!-- Modal Importar Tema -->
+    <!-- Modal Permisos de Usuario -->
+    <?php include'../mUsuarios/modalPermisos.php';?>
+    <!-- Modal Permisos de Usuario -->
 
     <!-- jQuery -->
     <script src="../plugins/jQuery/jquery-3.3.1.js"></script>
@@ -189,6 +208,7 @@ $fecha=date("Y-m-d");
     <script src="../mLogin/funcionesL.js"></script> <!-- Login -->
     <script src="../mDatosPersonales/funcionesDP.js"></script> <!-- Datos Personales --> 
     <script src="../mEstadoCivil/funcionesEC.js"></script> <!-- Estado Civil -->
+    <script src="../mUsuarios/funcionesU.js"></script> <!-- Usuarios -->
     <script src="../mTemas/funcionesT.js"></script> <!-- Temas -->
     <!-- DataTables -->
     <script src="../plugins/dataTablesB4/js/jquery.dataTables.min.js"></script>
@@ -226,6 +246,8 @@ $fecha=date("Y-m-d");
     <script>
         combo_ecivil();
         selectTwo();
+        combo_persona_U();
+        combo_temas_U();
     </script>
 
     <script>
