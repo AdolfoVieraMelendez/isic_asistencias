@@ -91,7 +91,7 @@ $fecha=date("Y-m-d");
                 </div>
             </div>
 
-            <div class="container" id="asistencias">
+            <div class="container-fluid" id="asistencias">
                 <section id="asistencia-AS">
                     <?php
                         include'../mAsistencias/formAsistencia.php';
@@ -186,13 +186,13 @@ $fecha=date("Y-m-d");
         <?php include'../mInicio/modalCambioC.php'; ?>
     <!-- Modal de Cambio de Contrasema Inicio -->
     <!-- Modal Horario DP -->
-        <?php include '../mDatosPersonales/modalHorario.php'; ?>
+        <?php include'../mDatosPersonales/modalHorario.php'; ?>
     <!-- Modal Horario DP -->
     <!-- Modal Importar Tema -->
-        <?php include '../mTemas/modalImportar.php';?>
+        <?php include'../mTemas/modalImportar.php';?>
     <!-- Modal Importar Tema -->
     <!-- Modal Permisos de Usuario -->
-    <?php include'../mUsuarios/modalPermisos.php';?>
+        <?php include'../mUsuarios/modalPermisos.php';?>
     <!-- Modal Permisos de Usuario -->
 
     <!-- jQuery -->
@@ -210,6 +210,7 @@ $fecha=date("Y-m-d");
     <script src="../mEstadoCivil/funcionesEC.js"></script> <!-- Estado Civil -->
     <script src="../mUsuarios/funcionesU.js"></script> <!-- Usuarios -->
     <script src="../mTemas/funcionesT.js"></script> <!-- Temas -->
+    <script src="../mAsistencias/funcionesAS.js"></script> <!-- Asistencias -->
     <!-- DataTables -->
     <script src="../plugins/dataTablesB4/js/jquery.dataTables.min.js"></script>
     <script src="../plugins/dataTablesB4/js/dataTables.bootstrap4.min.js"></script>
@@ -248,6 +249,7 @@ $fecha=date("Y-m-d");
         selectTwo();
         combo_persona_U();
         combo_temas_U();
+        showTime();
     </script>
 
     <script>

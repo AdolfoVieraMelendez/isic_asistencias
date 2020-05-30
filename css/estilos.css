@@ -425,3 +425,243 @@ a.article:hover {
 .borde{
     text-shadow: 2px 1px rgba(0,0,0,0.7);
 }
+
+/* ASISTENCIAS */
+
+input#claveAS[type="number"]::-webkit-outer-spin-button,
+input#claveAS[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input#claveAS[type="number"]{
+    -moz-appearance: textfield;
+}
+
+span#reloj{
+    font-family: 'DJB Get Digital', sans-serif;
+    font-size: 69px;
+}
+
+label.lblTiempo{
+    width: 100%;
+}
+
+
+.clave-group input[type="number"]{
+    padding-left: 40px;
+}
+
+.clave-group{
+    position: relative;
+}
+
+.clave-group i{
+    position: absolute;
+    left: 0px;
+    top: 1px;
+    padding: 30px 25px 26px 25px;
+    color: #000;
+    transition: .3s;
+}
+
+.clave-group.bg-icon input[type="number"]:focus + i{
+    color: #fff;
+    background-color: dodgerblue;
+}
+
+.clave-group.bg-icon i{
+    background-color: #aaa;
+    color: #fff;
+    border-radius: 4px 0 0 4px;
+    font-size: 20px;
+}
+
+input#claveAS[type="number"]{
+    padding: 15px 12px 15px 80px;
+    font-size: 30px;
+}
+
+span.clave_ph{
+    position: absolute;
+    font-size: 30px;
+    left: 80px;
+    top: 15px;
+    color: #aaa;
+    transition:  all .3s ease-in;
+}
+
+.clave-group input[type="number"]:focus + .clave_ph, .clave-group input[type="number"]:valid + .clave_ph{
+    font-size: 14px;
+    left: 69%;
+    top: 0;
+    color: #000;
+    transition:  all .3s ease-in;
+    
+}
+
+.card-container{
+    background-color: #34495e;
+    height: 500px;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "card1 card2 card3"
+    "card1 card4 card5"
+    "card1 card6 card7";
+    color:#fff;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.card-box1{
+    grid-area: card1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.img-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+img.profile{
+    border-radius: 100%;
+    max-width: 230px;
+    max-height: 230px;
+    border: #fff 3px solid;
+}
+
+.card-box2{
+    grid-area: card2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card-box3{
+    grid-area: card3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card-box4{
+    grid-area: card4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card-box5{
+    grid-area: card5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card-box6{
+    grid-area: card6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card-box7{
+    grid-area: card7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.guion{
+    position: relative;
+}
+
+.guion::before{
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 80%;
+    background: #fff;
+    top: 32px;
+}
+
+.estatus-container{
+    font-size: 2em;
+}
+
+.estatus-container{
+    padding-top: 16px;
+    border-radius: 25px;
+}
+
+@media (max-width: 992px){
+    .clave-group input[type="number"]:focus + .clave_ph, .clave-group input[type="number"]:valid + .clave_ph{
+        left: 69%;
+        top: 0;
+    }
+
+    .card-container{
+        height: 800px;
+        font-size: 16px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "card1 card1"
+        "card2 card3"
+        "card4 card5"
+        "card6 card7";
+    }
+
+    .card-box1{
+        margin-top: 15px;
+    }
+
+    .card-box2, .card-box3, .card-box4, .card-box5, .card-box6, .card-box7{
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 768px){
+    .clave-group input[type="number"]:focus + .clave_ph, .clave-group input[type="number"]:valid + .clave_ph{
+        left: 69%;
+        top: 0;
+    }
+
+    .card-container{
+        height: 1080px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "card1"
+        "card2"
+        "card3"
+        "card4"
+        "card5"
+        "card6"
+        "card7";
+    }
+}
+
+#historialP-AS{
+    color: #4cd137;
+}
+
+#historialRMe-AS{
+    color: #F97F51;
+}
+
+#historialRMa-AS{
+    color: #d63031;
+}
+
+#historialS-AS{
+    color: #0984e3;
+}
+
+/* ASISTENCIAS */
